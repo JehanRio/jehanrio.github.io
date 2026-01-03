@@ -6,16 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next build"
   },
   "dependencies": {
+    "critters": "^0.0.23",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.323.0",
     "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "gray-matter": "^4.0.3",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1",
-    "lucide-react": "^0.323.0"
+    "remark-html": "^16.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
