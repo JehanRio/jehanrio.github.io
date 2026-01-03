@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Disallow common files
+Disallow: /_next/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+
+# Allow important pages
+Allow: /
+Allow: /blog
+Allow: /projects
+Allow: /about
+
+# Crawl-delay
+Crawl-delay: 1
