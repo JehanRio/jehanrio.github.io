@@ -169,8 +169,8 @@ MIT License
 
 如有问题或建议，请通过以下方式联系：
 
-- 邮箱: your-email@example.com
-- GitHub: [你的GitHub地址]
+- 邮箱: jehanrio77@gmail.com
+- GitHub: [JehanRio](https://github.com/JehanRio)
 
 ---
 

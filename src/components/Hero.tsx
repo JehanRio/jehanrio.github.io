@@ -5,27 +5,27 @@ import { ArrowRight, Github, Mail, MapPin, Calendar } from 'lucide-react'
 
 export default function Hero() {
   return (
-    <section className="section-padding">
+    <section className="py-16 lg:py-20">
       <div className="container">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8">
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-4xl font-bold">
+          <div className="mb-6">
+            <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
               A
             </div>
           </div>
           
-          <h1 className="text-5xl lg:text-7xl font-bold mb-6">
-            <span className="gradient-text">Hi, I'm Alex</span>
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4">
+            <span className="gradient-text">Hi, I'm JehanRio</span>
           </h1>
           
-          <p className="text-xl lg:text-2xl text-gray-600 mb-4">
-            Design Engineer & Creative Developer
+          <p className="text-lg lg:text-xl text-gray-600 mb-4">
+            Backend Engineer & Creative Developer
           </p>
           
-          <div className="flex flex-wrap justify-center items-center gap-4 text-gray-500 mb-8">
+          <div className="flex flex-wrap justify-center items-center gap-4 text-gray-500 mb-6">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
-              <span>San Francisco, CA</span>
+              <span>Shenzhen, China</span>
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
@@ -33,10 +33,8 @@ export default function Hero() {
             </div>
           </div>
           
-          <p className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-            I'm passionate about creating elegant and refined UIs with creative design, 
-            motion design, interactive animation, React, CSS, and generative art. 
-            My vocation is to bridge the gap between design and development.
+          <p className="text-base text-gray-600 mb-8 max-w-xl mx-auto">
+            保持思考, 等待, 斋戒
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
