@@ -10,6 +10,8 @@
   body {
     @apply antialiased;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.03'%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3Ccircle cx='13' cy='13' r='1'/%3E%3Ccircle cx='27' cy='7' r='1'/%3E%3Ccircle cx='33' cy='13' r='1'/%3E%3Ccircle cx='47' cy='7' r='1'/%3E%3Ccircle cx='53' cy='13' r='1'/%3E%3Ccircle cx='7' cy='27' r='1'/%3E%3Ccircle cx='13' cy='33' r='1'/%3E%3Ccircle cx='27' cy='27' r='1'/%3E%3Ccircle cx='33' cy='33' r='1'/%3E%3Ccircle cx='47' cy='27' r='1'/%3E%3Ccircle cx='53' cy='33' r='1'/%3E%3Ccircle cx='7' cy='47' r='1'/%3E%3Ccircle cx='13' cy='53' r='1'/%3E%3Ccircle cx='27' cy='47' r='1'/%3E%3Ccircle cx='33' cy='53' r='1'/%3E%3Ccircle cx='47' cy='47' r='1'/%3E%3Ccircle cx='53' cy='53' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
   }
 }
 
@@ -19,22 +21,45 @@
   }
   
   .section-padding {
-    @apply py-16 lg:py-24;
+    @apply py-8 lg:py-12;
   }
   
   .card {
-    @apply bg-white rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300;
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-gray-300 transition-all duration-300;
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent;
   }
   
   .btn-primary {
-    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200;
+    @apply inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gray-900 hover:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors duration-200;
   }
   
   .btn-secondary {
-    @apply inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200;
+    @apply inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors duration-200;
+  }
+  
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .float-animation-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  
+  .float-animation-delayed-2 {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 4s;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }

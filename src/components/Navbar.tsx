@@ -30,7 +30,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                 >
                   {item.name}
                 </Link>
@@ -41,7 +41,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               type="button"
-              className="text-gray-600 hover:text-blue-600 focus:outline-none focus:text-blue-600"
+              className="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
@@ -61,7 +61,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
+                className="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
