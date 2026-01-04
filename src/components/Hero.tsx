@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Github, Mail, MapPin, Calendar } from 'lucide-react'
 
 export default function Hero() {
@@ -11,10 +12,11 @@ export default function Hero() {
           <div className="flex flex-col lg:flex-row items-center gap-6">
             <div className="flex-shrink-0">
               <div className="w-20 h-20 rounded-full bg-gradient-to-br from-gray-800 to-black flex items-center justify-center text-white text-2xl font-bold">
-              <img
+              <Image
                 src="https://github.com/JehanRio.png"
                 alt="JehanRio"
                 className="w-20 h-20 rounded-full object-cover"
+                unoptimized
               />
               </div>
             </div>

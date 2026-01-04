@@ -49,7 +49,14 @@ const posts: PostsRecord = {
 }
 
 export async function generateStaticParams() {
-  return Object.keys(posts).map((slug) => ({
+  const postSlugs = Object.keys(posts)
+  
+  // If no posts exist, return empty array to prevent build errors
+  if (postSlugs.length === 0) {
+    return []
+  }
+  
+  return postSlugs.map((slug) => ({
     slug,
   }))
 }
