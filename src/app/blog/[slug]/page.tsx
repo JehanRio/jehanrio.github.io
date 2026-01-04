@@ -4,67 +4,35 @@ import Link from 'next/link'
 import { Calendar, ArrowLeft, Tag, Clock } from 'lucide-react'
 
 const posts = {
-  'art-of-design-engineering': {
-    title: 'The Art of Design Engineering',
-    excerpt: 'Exploring the intersection of design and development, and how to create meaningful user experiences.',
-    content: `
-# The Art of Design Engineering
+  // 'your-article-slug': {
+  //   title: 'Your Article Title',
+  //   excerpt: 'Brief description of your article content...',
+  //   content: \`
+  // # Your Article Title
 
-Design engineering is more than just the combination of design and development—it's a philosophy that bridges the gap between creative vision and technical execution. In this post, I'll share my thoughts on what makes a great design engineer and how to excel in this role.
+  // Start your article introduction here. This should give readers an overview of what they'll learn or discover.
 
-## What is Design Engineering?
+  // ## Section 1
 
-Design engineering is the practice of combining design sensibility with engineering precision. It's about understanding both the aesthetic and technical aspects of building products. A design engineer doesn't just implement designs; they actively participate in the creative process, bringing technical insight to design decisions and design thinking to engineering choices.
+  // Write your main content here. You can use markdown formatting:
 
-## The Skills Every Design Engineer Needs
+  // - Bullet points
+  // - **Bold text**
+  // - *Italic text*
+  // - \`code snippets\`
 
-### 1. Design Fundamentals
-Understanding typography, color theory, layout, and user experience principles is crucial. You need to be able to critique designs, suggest improvements, and understand the "why" behind design decisions.
+  // ### Subsection
 
-### 2. Technical Proficiency
-Whether it's React, CSS, or whatever technology stack your team uses, you need to be comfortable implementing complex interactions and layouts. Technical skills allow you to push design boundaries.
+  // Add more detailed content in subsections as needed.
 
-### 3. Communication
-Design engineers often act as translators between designers and developers. You need to communicate design intent to engineers and technical constraints to designers.
+  // ## Conclusion
 
-### 4. Problem Solving
-Every design has technical implications, and every technical solution has design considerations. Design engineers excel at finding creative solutions to complex problems.
-
-## My Journey
-
-I've been working as a design engineer at WeChat Ads Team for 10 years. Throughout this journey, I've learned that the most successful design engineers are those who are genuinely passionate about both design and development. They find joy in the small details—a perfectly smooth animation, a beautifully crafted interface, or an elegant piece of code.
-
-## Building Better Products
-
-When designers and engineers work together from the beginning, the results are always better. Design engineers can:
-
-- Help validate design concepts early in the process
-- Identify potential technical challenges before they become blockers
-- Suggest design alternatives that are more performant or accessible
-- Bridge communication gaps between teams
-
-## The Future of Design Engineering
-
-As our tools and technologies continue to evolve, the role of design engineer becomes increasingly important. We're seeing the rise of:
-
-- AI-assisted design tools
-- No-code/low-code platforms
-- Advanced animation and interaction libraries
-- New ways to create and share design systems
-
-The design engineer of the future will need to be adaptable, continuously learning, and always questioning how we can create better user experiences.
-
-## Conclusion
-
-Being a design engineer isn't just about having technical skills or design sensibility—it's about having the passion to create something meaningful. It's about understanding that every pixel matters, every interaction should be delightful, and every line of code should be crafted with care.
-
-If you're interested in pursuing design engineering, my advice is to start building things. Create projects that challenge you to learn both design and development. Most importantly, never stop being curious about how things work and how they can be improved.
-    `,
-    date: '2025-01-15',
-    tags: ['Design', 'Development', 'UX'],
-    readingTime: '5 min read',
-  },
- 
+  // Wrap up your article with key takeaways and conclusions.
+  //   \`,
+  //   date: '2025-01-15',
+  //   tags: ['Tag1', 'Tag2', 'Tag3'],
+  //   readingTime: '5 min read',
+  // },
 }
 
 export async function generateStaticParams() {

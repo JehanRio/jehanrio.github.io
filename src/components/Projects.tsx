@@ -3,13 +3,22 @@
 import Link from 'next/link'
 import { ExternalLink, Github } from 'lucide-react'
 
-const projects = [
+interface Project {
+  title: string
+  description: string
+  tags: string[]
+  link?: string | null
+  github?: string | null
+  featured: boolean
+}
+
+const projects: Project[] = [
   // {
-  //   title: 'AI-Powered Recommendation System',
-  //   description: '基于深度学习的智能推荐系统，为用户提供个性化内容推荐。',
-  //   tags: ['Python', 'TensorFlow', 'Node.js', 'Redis'],
-  //   link: null,
-  //   github: 'https://github.com',
+  //   title: 'Your Project Title',
+  //   description: 'Brief description of your project and what it does...',
+  //   tags: ['Tech1', 'Tech2', 'Tech3'],
+  //   link: 'https://your-project-url.com',
+  //   github: 'https://github.com/yourusername/project',
   //   featured: true,
   // },
 ]

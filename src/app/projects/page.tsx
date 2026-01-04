@@ -4,40 +4,23 @@ import Link from 'next/link'
 import { ExternalLink, Github, Calendar, ArrowRight } from 'lucide-react'
 
 const projects = [
-  {
-    title: 'Flow - Atomic Class Fluid Component',
-    description: 'A modern, flexible component library built with atomic CSS principles. Focuses on fluid design and responsive layouts that adapt seamlessly across different screen sizes.',
-    longDescription: 'Flow is a comprehensive component library that embraces atomic CSS principles to create highly customizable and flexible UI components. The library emphasizes fluid design patterns that automatically adapt to different container sizes, making it perfect for modern responsive web applications.',
-    tags: ['React', 'TypeScript', 'CSS', 'Component Library'],
-    status: 'Active',
-    year: '2024',
-    link: 'https://codepen.io/aragakey',
-    github: null,
-    featured: true,
-    highlights: [
-      'Atomic CSS architecture for maximum flexibility',
-      'Fluid design patterns that adapt to any container size',
-      'TypeScript support for better developer experience',
-      'Comprehensive documentation and examples'
-    ]
-  },
-  {
-    title: 'Pixie - Design Review Tool',
-    description: 'A comprehensive design review and feedback platform for design teams. Streamlines the approval process with real-time collaboration features.',
-    longDescription: 'Pixie is a specialized tool designed to streamline the design review process for creative teams. It provides real-time collaboration features, annotation tools, and workflow management to make design reviews more efficient and productive.',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'WebSocket'],
-    status: 'Active',
-    year: '2024',
-    link: 'https://wxad.design/pixie',
-    github: null,
-    featured: false,
-    highlights: [
-      'Real-time collaborative design reviews',
-      'Advanced annotation and markup tools',
-      'Workflow management and approval processes',
-      'Integration with popular design tools'
-    ]
-  }
+  // {
+  //   title: 'Your Project Title',
+  //   description: 'Brief description of your project...',
+  //   longDescription: 'Detailed description of your project, its features, and what makes it special...',
+  //   tags: ['Tech1', 'Tech2', 'Tech3', 'Tech4'],
+  //   status: 'Active', // or 'Completed', 'In Progress', etc.
+  //   year: '2024',
+  //   link: 'https://your-project-url.com',
+  //   github: 'https://github.com/yourusername/project',
+  //   featured: true, // true for featured section, false for other projects
+  //   highlights: [
+  //     'Key feature 1',
+  //     'Key feature 2',
+  //     'Key feature 3',
+  //     'Key feature 4'
+  //   ]
+  // },
 ]
 
 export const metadata: Metadata = {
@@ -211,10 +194,10 @@ export default function ProjectsPage() {
             <p className="text-gray-600 mb-6">
               Interested in collaborating or want to discuss any of these projects?
             </p>
-            <Link href="/about" className="btn-primary">
+            <a href="mailto:your-email@example.com" className="btn-primary">
               Get in Touch
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>

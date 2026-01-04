@@ -4,14 +4,14 @@ import Link from 'next/link'
 import { Calendar, ArrowRight, Tag } from 'lucide-react'
 
 const posts = [
-  {
-    slug: 'art-of-design-engineering',
-    title: 'The Art of Design Engineering',
-    excerpt: 'Exploring the intersection of design and development, and how to create meaningful user experiences that balance aesthetics with functionality.',
-    date: '2025-01-15',
-    tags: ['Design', 'Development', 'UX'],
-    readingTime: '5 min read',
-  },
+  // {
+  //   slug: 'your-article-slug',
+  //   title: 'Your Article Title',
+  //   excerpt: 'Brief description of your article content...',
+  //   date: '2025-01-15',
+  //   tags: ['Tag1', 'Tag2', 'Tag3'],
+  //   readingTime: '5 min read',
+  // },
 ]
 
 export const metadata: Metadata = {

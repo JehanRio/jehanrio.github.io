@@ -4,12 +4,19 @@ import Projects from '@/components/Projects'
 import Link from 'next/link'
 import { ArrowRight, Calendar } from 'lucide-react'
 
-const recentPosts = [
+interface Post {
+  title: string
+  excerpt: string
+  date: string
+  slug: string
+}
+
+const recentPosts: Post[] = [
   // {
-  //   title: 'The Art of Design Engineering',
-  //   excerpt: 'Exploring the intersection of design and development.',
+  //   title: 'Your Article Title',
+  //   excerpt: 'Brief description of your article content...',
   //   date: '2025-01-15',
-  //   slug: 'art-of-design-engineering',
+  //   slug: 'your-article-slug',
   // },
 ]
 
