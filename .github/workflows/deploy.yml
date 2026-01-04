@@ -1,4 +1,17 @@
-name: Deploy to GitHub Pages
+# 注意：此项目现在使用 Vercel 部署
+# GitHub Actions 配置已保留用于备份参考
+# 主要部署流程：
+# 1. 代码推送到 GitHub
+# 2. Vercel 自动检测并部署
+# 3. 配置环境变量 OPENAI_API_KEY
+# 4. 完成部署
+
+# 如果需要使用 GitHub Pages 部署，请：
+# 1. 重新添加 output: 'export' 到 next.config.js
+# 2. 移除 API 路由功能
+# 3. 修改此工作流程中的 path: './out'
+
+name: Build Only (Backup)
 
 on:
   push:
@@ -8,12 +21,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   build:
@@ -33,22 +40,9 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        
+      - name: Build Status
+        run: |
+          echo "✅ Build completed successfully!"
+          echo "📁 Build output is in .next directory"
+          echo "🚀 For deployment, use: vercel --prod"
