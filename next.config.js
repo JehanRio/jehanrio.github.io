@@ -9,7 +9,7 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-    domains: ['images.unsplash.com', 'via.placeholder.com'],
+    domains: ['images.unsplash.com', 'via.placeholder.com', 'github.com'],
     formats: ['image/webp', 'image/avif'],
   },
 }

@@ -48,12 +48,13 @@ const posts: PostsRecord = {
   // },
 }
 
+// Generate static params for dynamic routes
 export async function generateStaticParams() {
   const postSlugs = Object.keys(posts)
   
-  // If no posts exist, return empty array to prevent build errors
+  // If no posts exist, return at least one placeholder to prevent build errors
   if (postSlugs.length === 0) {
-    return []
+    return [{ slug: 'placeholder' }]
   }
   
   return postSlugs.map((slug) => ({
