@@ -18,7 +18,7 @@ const projects: Project[] = [
   //   description: 'Brief description of your project and what it does...',
   //   tags: ['Tech1', 'Tech2', 'Tech3'],
   //   link: 'https://your-project-url.com',
-  //   github: 'https://github.com/yourusername/project',
+  //   github: 'https://github.com/JehanRio/project',
   //   featured: true,
   // },
 ]

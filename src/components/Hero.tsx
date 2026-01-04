@@ -67,7 +67,7 @@ export default function Hero() {
                 
                 <div className="flex gap-2">
                   <a 
-                    href="https://github.com" 
+                    href="https://github.com/JehanRio" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
@@ -75,7 +75,7 @@ export default function Hero() {
                     <Github className="w-4 h-4 text-gray-600" />
                   </a>
                   <a 
-                    href="mailto:alex@example.com"
+                    href="mailto:jehanrio77@gmail.com"
                     className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors"
                   >
                     <Mail className="w-4 h-4 text-gray-600" />

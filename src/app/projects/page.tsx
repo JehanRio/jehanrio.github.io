@@ -25,7 +25,7 @@ const projects: Project[] = [
   //   status: 'Active', // or 'Completed', 'In Progress', etc.
   //   year: '2024',
   //   link: 'https://your-project-url.com',
-  //   github: 'https://github.com/yourusername/project',
+  //   github: 'https://github.com/JehanRio/project',
   //   featured: true, // true for featured section, false for other projects
   //   highlights: [
   //     'Key feature 1',
@@ -207,7 +207,7 @@ export default function ProjectsPage() {
             <p className="text-gray-600 mb-6">
               Interested in collaborating or want to discuss any of these projects?
             </p>
-            <a href="mailto:your-email@example.com" className="btn-primary">
+            <a href="mailto:jehanrio77@gmail.com" className="btn-primary">
               Get in Touch
               <ArrowRight className="ml-2 h-4 w-4" />
             </a>
