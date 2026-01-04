@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Projects from '@/components/Projects'
+import ChatBot from '@/components/ChatBot'
 import Link from 'next/link'
 import { ArrowRight, Calendar } from 'lucide-react'
 
@@ -90,6 +91,26 @@ export default function Home() {
         </section>
 
         <Projects />
+
+        <section className="py-8 lg:py-12 relative">
+          <div className="container">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl lg:text-3xl font-bold mb-3">
+                AI <span className="gradient-text">助手</span>
+              </h2>
+              <p className="text-sm text-gray-600 max-w-lg mx-auto">
+                有任何问题？我随时为你解答
+              </p>
+            </div>
+
+            <div className="max-w-2xl mx-auto">
+              <ChatBot />
+            </div>
+          </div>
+          
+          <div className="absolute top-20 right-10 w-24 h-24 bg-gray-100 rounded-full opacity-20 float-animation"></div>
+          <div className="absolute bottom-32 left-10 w-20 h-20 bg-gray-200 rounded-full opacity-15 float-animation-delayed"></div>
+        </section>
       </div>
     </div>
   )
