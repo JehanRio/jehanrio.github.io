@@ -41,19 +41,23 @@ git push origin main
 7. 点击 "Deploy"
 
 ### 第四步：配置环境变量
-1. 在 Vercel 项目设置中：
+1. 在 GitHub 仓库中设置环境变量：
+   - 进入仓库的 Settings > Secrets and variables > Actions
+   - 在 "Variables" 部分添加：
+   ```
+   NEXT_PUBLIC_API_URL=https://your-vercel-app.vercel.app
+   ```
+   - 在 "Secrets" 部分添加（可选，如果在前端也需要API功能）：
+   ```
+   OPENAI_API_KEY=sk-your-api-key-here
+   ```
+2. 在 Vercel 项目设置中：
    - 进入 "Settings" > "Environment Variables"
    - 添加以下变量：
    ```
    OPENAI_API_KEY=sk-your-api-key-here
    ```
    - 点击 "Save"
-2. 在 GitHub Pages 前端项目中：
-   - 进入仓库的 Settings > Secrets and variables > Actions
-   - 在 "Variables" 部分添加：
-   ```
-   NEXT_PUBLIC_API_URL=https://your-vercel-app.vercel.app
-   ```
 
 ### 第五步：更新部署配置
 确保仓库中的 `vercel.json` 文件已正确配置为仅部署 API 路由：
