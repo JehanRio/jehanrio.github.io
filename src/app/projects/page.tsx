@@ -30,80 +30,12 @@ const projects = [
     year: '2024',
     link: 'https://wxad.design/pixie',
     github: null,
-    featured: true,
+    featured: false,
     highlights: [
       'Real-time collaborative design reviews',
       'Advanced annotation and markup tools',
       'Workflow management and approval processes',
       'Integration with popular design tools'
-    ]
-  },
-  {
-    title: 'Generative Art Collection',
-    description: 'A collection of generative art pieces exploring the intersection of code and creativity using JavaScript and Canvas API.',
-    longDescription: 'This project showcases various generative art pieces created using JavaScript, Canvas API, and creative coding techniques. Each piece demonstrates different algorithms and visual styles, from mathematical patterns to organic, nature-inspired forms.',
-    tags: ['JavaScript', 'Canvas', 'Creative Coding', 'Algorithm'],
-    status: 'Ongoing',
-    year: '2023-2024',
-    link: null,
-    github: 'https://github.com/alex/generative-art',
-    featured: false,
-    highlights: [
-      'Procedural generation algorithms',
-      'Mathematical and organic visual patterns',
-      'Interactive and animated pieces',
-      'Performance-optimized rendering'
-    ]
-  },
-  {
-    title: 'Motion Design Portfolio',
-    description: 'Interactive portfolio showcasing motion design and micro-interactions for modern web applications.',
-    longDescription: 'A curated collection of motion design work and micro-interactions that demonstrate the power of thoughtful animation in user interface design. Each piece showcases different animation principles and technical implementations.',
-    tags: ['CSS', 'JavaScript', 'Animation', 'UX Design'],
-    status: 'Ongoing',
-    year: '2023-2024',
-    link: null,
-    github: 'https://github.com/alex/motion-portfolio',
-    featured: false,
-    highlights: [
-      'CSS and JavaScript animation techniques',
-      'Micro-interaction design patterns',
-      'Performance-optimized animations',
-      'Accessibility considerations'
-    ]
-  },
-  {
-    title: 'CSS Framework - Minimalist',
-    description: 'A lightweight, utility-first CSS framework designed for rapid prototyping and production applications.',
-    longDescription: 'A utility-first CSS framework that prioritizes performance and developer experience. Built with modern CSS features and designed to work seamlessly with any framework or vanilla HTML.',
-    tags: ['CSS', 'Sass', 'Utility-First', 'Framework'],
-    status: 'Active',
-    year: '2023',
-    link: null,
-    github: 'https://github.com/alex/minimalist-css',
-    featured: false,
-    highlights: [
-      'Utility-first approach for rapid development',
-      'Small file size and excellent performance',
-      'Customizable design tokens',
-      'Comprehensive utility classes'
-    ]
-  },
-  {
-    title: 'Design System Toolkit',
-    description: 'A comprehensive toolkit for creating and maintaining design systems at scale.',
-    longDescription: 'An integrated toolkit that helps teams create, maintain, and evolve design systems. Includes component documentation, design tokens management, and automation tools.',
-    tags: ['React', 'TypeScript', 'Documentation', 'Design Systems'],
-    status: 'Active',
-    year: '2023-2024',
-    link: null,
-    github: 'https://github.com/alex/design-system-toolkit',
-    featured: false,
-    highlights: [
-      'Automated component documentation',
-      'Design tokens management',
-      'Accessibility testing integration',
-      'Cross-platform compatibility'
     ]
   }
 ]
@@ -128,8 +60,7 @@ export default function ProjectsPage() {
               <span className="gradient-text">Projects</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A collection of projects that showcase my passion for design and development, 
-              from interactive animations to design systems and creative coding.
+              A collection of AI projects
             </p>
           </div>
 

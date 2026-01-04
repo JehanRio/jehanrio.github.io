@@ -4,30 +4,14 @@ import Link from 'next/link'
 import { ExternalLink, Github } from 'lucide-react'
 
 const projects = [
-  {
-    title: 'AI-Powered Recommendation System',
-    description: '基于深度学习的智能推荐系统，为用户提供个性化内容推荐。',
-    tags: ['Python', 'TensorFlow', 'Node.js', 'Redis'],
-    link: null,
-    github: 'https://github.com',
-    featured: true,
-  },
-  {
-    title: 'Microservices Architecture Platform',
-    description: '高并发微服务架构平台，支持大规模分布式系统部署和管理。',
-    tags: ['Go', 'Docker', 'Kubernetes', 'PostgreSQL'],
-    link: null,
-    github: 'https://github.com',
-    featured: true,
-  },
-  {
-    title: 'Real-time Chat Application',
-    description: '实时聊天应用，支持高并发消息处理和AI智能回复功能。',
-    tags: ['Node.js', 'React', 'WebSocket', 'MongoDB'],
-    link: null,
-    github: 'https://github.com',
-    featured: true,
-  },
+  // {
+  //   title: 'AI-Powered Recommendation System',
+  //   description: '基于深度学习的智能推荐系统，为用户提供个性化内容推荐。',
+  //   tags: ['Python', 'TensorFlow', 'Node.js', 'Redis'],
+  //   link: null,
+  //   github: 'https://github.com',
+  //   featured: true,
+  // },
 ]
 
 export default function Projects() {

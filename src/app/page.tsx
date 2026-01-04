@@ -5,18 +5,12 @@ import Link from 'next/link'
 import { ArrowRight, Calendar } from 'lucide-react'
 
 const recentPosts = [
-  {
-    title: 'The Art of Design Engineering',
-    excerpt: 'Exploring the intersection of design and development.',
-    date: '2025-01-15',
-    slug: 'art-of-design-engineering',
-  },
-  {
-    title: 'Building Interactive Animations',
-    excerpt: 'Creating smooth, performant animations.',
-    date: '2025-01-10',
-    slug: 'building-interactive-animations',
-  },
+  // {
+  //   title: 'The Art of Design Engineering',
+  //   excerpt: 'Exploring the intersection of design and development.',
+  //   date: '2025-01-15',
+  //   slug: 'art-of-design-engineering',
+  // },
 ]
 
 export default function Home() {
@@ -39,7 +33,7 @@ export default function Home() {
                 Recent <span className="gradient-text">Posts</span>
               </h2>
               <p className="text-sm text-gray-600 max-w-lg mx-auto">
-                Thoughts on design, development, and the creative process
+                记录我的所思所感
               </p>
             </div>
 
