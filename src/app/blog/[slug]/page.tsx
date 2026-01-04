@@ -3,7 +3,20 @@ import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import { Calendar, ArrowLeft, Tag, Clock } from 'lucide-react'
 
-const posts = {
+interface BlogPostDetail {
+  title: string
+  excerpt: string
+  content: string
+  date: string
+  tags: string[]
+  readingTime: string
+}
+
+interface PostsRecord {
+  [key: string]: BlogPostDetail
+}
+
+const posts: PostsRecord = {
   // 'your-article-slug': {
   //   title: 'Your Article Title',
   //   excerpt: 'Brief description of your article content...',

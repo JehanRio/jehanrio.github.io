@@ -3,7 +3,20 @@ import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import { ExternalLink, Github, Calendar, ArrowRight } from 'lucide-react'
 
-const projects = [
+interface Project {
+  title: string
+  description: string
+  longDescription: string
+  tags: string[]
+  status: string
+  year: string
+  link?: string | null
+  github?: string | null
+  featured: boolean
+  highlights: string[]
+}
+
+const projects: Project[] = [
   // {
   //   title: 'Your Project Title',
   //   description: 'Brief description of your project...',

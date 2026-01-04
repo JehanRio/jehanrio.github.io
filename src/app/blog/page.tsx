@@ -3,7 +3,16 @@ import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 import { Calendar, ArrowRight, Tag } from 'lucide-react'
 
-const posts = [
+interface BlogPost {
+  slug: string
+  title: string
+  excerpt: string
+  date: string
+  tags: string[]
+  readingTime: string
+}
+
+const posts: BlogPost[] = [
   // {
   //   slug: 'your-article-slug',
   //   title: 'Your Article Title',
