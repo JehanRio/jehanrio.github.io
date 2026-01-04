@@ -12,46 +12,46 @@ const posts = [
     tags: ['Design', 'Development', 'UX'],
     readingTime: '5 min read',
   },
-  {
-    slug: 'building-interactive-animations',
-    title: 'Building Interactive Animations',
-    excerpt: 'A comprehensive guide to creating smooth, performant animations that enhance user experience without compromising performance.',
-    date: '2025-01-10',
-    tags: ['Animation', 'CSS', 'JavaScript'],
-    readingTime: '8 min read',
-  },
-  {
-    slug: 'modern-css-techniques',
-    title: 'Modern CSS Techniques',
-    excerpt: 'Exploring the latest CSS features including Container Queries, CSS Layers, and modern layout techniques that improve development workflow.',
-    date: '2025-01-05',
-    tags: ['CSS', 'Web Development'],
-    readingTime: '6 min read',
-  },
-  {
-    slug: 'generative-art-with-code',
-    title: 'Generative Art with Code',
-    excerpt: 'How to create beautiful generative art using JavaScript, Canvas API, and creative coding techniques.',
-    date: '2024-12-28',
-    tags: ['Creative Coding', 'JavaScript', 'Art'],
-    readingTime: '10 min read',
-  },
-  {
-    slug: 'react-performance-optimization',
-    title: 'React Performance Optimization',
-    excerpt: 'Advanced techniques for optimizing React applications, from memoization to code splitting and lazy loading.',
-    date: '2024-12-20',
-    tags: ['React', 'Performance', 'Optimization'],
-    readingTime: '7 min read',
-  },
-  {
-    slug: 'design-systems-guide',
-    title: 'Building Design Systems',
-    excerpt: 'A practical guide to creating scalable design systems that improve consistency and development velocity.',
-    date: '2024-12-15',
-    tags: ['Design Systems', 'UI/UX', 'Best Practices'],
-    readingTime: '9 min read',
-  },
+  // {
+  //   slug: 'building-interactive-animations',
+  //   title: 'Building Interactive Animations',
+  //   excerpt: 'A comprehensive guide to creating smooth, performant animations that enhance user experience without compromising performance.',
+  //   date: '2025-01-10',
+  //   tags: ['Animation', 'CSS', 'JavaScript'],
+  //   readingTime: '8 min read',
+  // },
+  // {
+  //   slug: 'modern-css-techniques',
+  //   title: 'Modern CSS Techniques',
+  //   excerpt: 'Exploring the latest CSS features including Container Queries, CSS Layers, and modern layout techniques that improve development workflow.',
+  //   date: '2025-01-05',
+  //   tags: ['CSS', 'Web Development'],
+  //   readingTime: '6 min read',
+  // },
+  // {
+  //   slug: 'generative-art-with-code',
+  //   title: 'Generative Art with Code',
+  //   excerpt: 'How to create beautiful generative art using JavaScript, Canvas API, and creative coding techniques.',
+  //   date: '2024-12-28',
+  //   tags: ['Creative Coding', 'JavaScript', 'Art'],
+  //   readingTime: '10 min read',
+  // },
+  // {
+  //   slug: 'react-performance-optimization',
+  //   title: 'React Performance Optimization',
+  //   excerpt: 'Advanced techniques for optimizing React applications, from memoization to code splitting and lazy loading.',
+  //   date: '2024-12-20',
+  //   tags: ['React', 'Performance', 'Optimization'],
+  //   readingTime: '7 min read',
+  // },
+  // {
+  //   slug: 'design-systems-guide',
+  //   title: 'Building Design Systems',
+  //   excerpt: 'A practical guide to creating scalable design systems that improve consistency and development velocity.',
+  //   date: '2024-12-15',
+  //   tags: ['Design Systems', 'UI/UX', 'Best Practices'],
+  //   readingTime: '9 min read',
+  // },
 ]
 
 export const metadata: Metadata = {
@@ -71,8 +71,7 @@ export default function BlogPage() {
               <span className="gradient-text">Blog</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Thoughts on design, development, creative coding, and the creative process. 
-              Join me as I explore the intersection of technology and art.
+              记录我的所思所感
             </p>
           </div>
 
