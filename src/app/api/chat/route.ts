@@ -17,7 +17,14 @@ export async function POST(request: NextRequest) {
     if (!message || typeof message !== 'string') {
       return NextResponse.json(
         { error: '消息内容无效' },
-        { status: 400 }
+        { 
+          status: 400,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          }
+        }
       )
     }
 
@@ -26,7 +33,14 @@ export async function POST(request: NextRequest) {
     if (!openaiApiKey) {
       return NextResponse.json(
         { error: '服务器配置错误：API密钥未设置' },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          }
+        }
       )
     }
 
@@ -51,7 +65,7 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo', // 可以改为 'gpt-4' 如果你有访问权限
+        model: 'gpt-3.5-turbo',
         messages,
         max_tokens: 1000,
         temperature: 0.7,
@@ -68,20 +82,41 @@ export async function POST(request: NextRequest) {
       if (response.status === 401) {
         return NextResponse.json(
           { error: 'API密钥验证失败' },
-          { status: 401 }
+          {
+            status: 401,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Methods': 'POST, OPTIONS',
+              'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            }
+          }
         )
       }
       
       if (response.status === 429) {
         return NextResponse.json(
           { error: '请求过于频繁，请稍后再试' },
-          { status: 429 }
+          {
+            status: 429,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Methods': 'POST, OPTIONS',
+              'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            }
+          }
         )
       }
 
       return NextResponse.json(
         { error: 'AI服务暂时不可用，请稍后再试' },
-        { status: 503 }
+        {
+          status: 503,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          }
+        }
       )
     }
 
@@ -90,16 +125,32 @@ export async function POST(request: NextRequest) {
     if (!data.choices || !data.choices[0] || !data.choices[0].message) {
       return NextResponse.json(
         { error: 'AI响应格式错误' },
-        { status: 500 }
+        {
+          status: 500,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          }
+        }
       )
     }
 
     const aiResponse = data.choices[0].message.content
 
-    return NextResponse.json({
-      response: aiResponse,
-      usage: data.usage || null
-    })
+    return NextResponse.json(
+      {
+        response: aiResponse,
+        usage: data.usage || null
+      },
+      {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        }
+      }
+    )
 
   } catch (error) {
     console.error('聊天API错误:', error)
@@ -108,13 +159,39 @@ export async function POST(request: NextRequest) {
     if (error instanceof SyntaxError) {
       return NextResponse.json(
         { error: '请求格式无效' },
-        { status: 400 }
+        {
+          status: 400,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          }
+        }
       )
     }
 
     return NextResponse.json(
       { error: '服务器内部错误' },
-      { status: 500 }
+      {
+        status: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        }
+      }
     )
   }
+}
+
+// 处理 OPTIONS 请求（CORS 预检）
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    }
+  })
 }

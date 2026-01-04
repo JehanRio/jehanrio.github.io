@@ -47,7 +47,9 @@ export default function ChatBot() {
     setIsLoading(true)
 
     try {
-      const response = await fetch('/api/chat', {
+      // 使用Vercel API的绝对URL
+      const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://your-vercel-app.vercel.app'
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

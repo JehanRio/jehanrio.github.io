@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 移除 output: 'export' 以支持 API 路由
+  // 静态导出配置 - 支持 GitHub Pages 部署
+  output: 'export',
   trailingSlash: true,
   basePath: '',
   assetPrefix: '',
@@ -8,7 +9,6 @@ const nextConfig = {
     optimizeCss: true,
   },
   images: {
-    // 保留 unoptimized: true 以支持静态部署
     unoptimized: true,
     domains: ['images.unsplash.com', 'via.placeholder.com', 'github.com'],
     formats: ['image/webp', 'image/avif'],
