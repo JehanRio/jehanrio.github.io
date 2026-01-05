@@ -15,6 +15,8 @@ export default function Hero() {
               <Image
                 src="https://github.com/JehanRio.png"
                 alt="JehanRio"
+                width={80}
+                height={80}
                 className="w-20 h-20 rounded-full object-cover"
                 unoptimized
               />

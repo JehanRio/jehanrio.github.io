@@ -1,7 +1,25 @@
 {
   "version": 2,
-  "framework": null,
   "buildCommand": "npm run build",
-  "outputDirectory": "out",
-  "installCommand": "npm install"
+  "devCommand": "npm run dev",
+  "installCommand": "npm ci",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "functions": {
+    "src/app/api/**/route.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1",
+      "headers": {
+        "cache-control": "s-maxage=60, stale-while-revalidate=300"
+      }
+    }
+  ],
+  "redirects": [],
+  "rewrites": [],
+  "headers": []
 }
