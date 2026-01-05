@@ -62,33 +62,16 @@ git push origin main
 ### 第五步：更新部署配置
 确保仓库中的 `vercel.json` 文件已正确配置为仅部署 API 路由：
 
-```json
-{
-  "version": 2,
-  "buildCommand": "npm run build",
-  "devCommand": "npm run dev",
-  "installCommand": "npm ci",
-  "outputDirectory": ".next",
-  "framework": "nextjs",
-  "functions": {
-    "src/app/api/**/route.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1",
-      "headers": {
-        "cache-control": "s-maxage=60, stale-while-revalidate=300"
-      }
-    }
-  ],
-  "redirects": [],
-  "rewrites": [],
-  "headers": []
-}
-```
+ ```json
+ {
+   "version": 2,
+   "buildCommand": "npm run build",
+   "devCommand": "npm run dev",
+   "installCommand": "npm ci",
+   "outputDirectory": ".next",
+   "framework": "nextjs"
+ }
+ ```
 
 ## 🧪 本地测试
 
