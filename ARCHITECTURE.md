@@ -4,7 +4,7 @@
 
 ```
 project-root/
-├── src/                    # Next.js 前端应用
+├── src/                    # Next.js 前端应用 (GitHub Pages)
 │   ├── app/               # 页面路由
 │   │   ├── page.tsx      # 首页
 │   │   ├── layout.tsx
@@ -13,13 +13,15 @@ project-root/
 │   │   └── ...
 │   ├── components/        # React 组件
 │   └── ...
-├── api/                   # 后端 API (独立部署到 Vercel)
+├── api/                   # 后端 API (Vercel Serverless)
 │   ├── src/
-│   │   ├── index.ts      # API 入口
-│   │   └── chat.ts       # 聊天功能
+│   │   └── app/
+│   │       └── api/
+│   │           └── chat/
+│   │               └── route.ts  # Vercel API 路由
 │   ├── package.json
 │   ├── tsconfig.json
-│   └── vercel.json       # Vercel API 专用配置
+│   └── vercel.json       # Vercel 专用配置
 ├── public/                # 静态资源
 ├── next.config.js         # Next.js 配置
 └── package.json
@@ -33,7 +35,7 @@ project-root/
 - 环境变量：`NEXT_PUBLIC_API_URL` (指向 Vercel API)
 
 ### Vercel (后端 API)
-- 部署 `api/` 目录
+- 部署 `api/` 目录中的 Serverless Functions
 - 环境变量：`OPENAI_API_KEY`
 
 ## 快速开始
@@ -52,8 +54,8 @@ cd api && npm install
 # 启动前端
 npm run dev
 
-# 启动后端 (另开终端)
-cd api && npm run dev
+# API 在 Vercel 本地环境测试
+cd api && npx vercel dev
 ```
 
 ### 3. 部署
@@ -63,9 +65,16 @@ git add .
 git commit -m "实现前后端分离架构"
 git push origin main
 
-# Vercel 会自动部署 api/ 目录
+# Vercel 会自动部署 api/ 目录中的 Serverless Functions
 # GitHub Actions 会部署前端到 Pages
 ```
+
+## API 端点
+
+部署后，API 可通过以下地址访问：
+
+- POST `https://your-project.vercel.app/api/chat`
+- GET `https://your-project.vercel.app/api/health`
 
 ## 环境变量配置
 
@@ -73,6 +82,6 @@ git push origin main
 - Settings > Secrets and variables > Actions > Variables
   - `NEXT_PUBLIC_API_URL`: `https://your-vercel-api.vercel.app`
 
-### Vercel (后端)
+### Vercel (后端 API)
 - Settings > Environment Variables
-  - `OPENAI_API_KEY`: `sk-your-api-key`
+  - `OPENAI_API_KEY`: `sk-your-api-key-here`

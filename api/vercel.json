@@ -1,8 +1,8 @@
 {
   "version": 2,
+  "framework": null,
   "buildCommand": "cd api && npm install && npm run build",
   "outputDirectory": "api/dist",
-  "framework": null,
   "installCommand": "cd api && npm install",
   "regions": ["iad1"],
   "functions": {
@@ -10,7 +10,5 @@
       "runtime": "nodejs18.x"
     }
   },
-  "includeFiles": [
-    "api/**"
-  ]
+  "includeFiles": ["api/**"]
 }

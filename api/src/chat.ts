@@ -1,5 +1,3 @@
-import { Request, Response } from 'express';
-
 interface ChatMessage {
   role: 'user' | 'assistant'
   content: string
@@ -17,18 +15,22 @@ export class ChatController {
     this.openaiApiKey = process.env.OPENAI_API_KEY || '';
   }
 
-  async handleChat(req: Request, res: Response): Promise<void> {
+  async handleChat(request: Request): Promise<NextResponse> {
     try {
-      const { message, history }: ChatRequest = req.body;
+      const { message, history }: ChatRequest = await request.json();
 
       if (!message || typeof message !== 'string') {
-        res.status(400).json({ error: '消息内容无效' });
-        return;
+        return NextResponse.json(
+          { error: '消息内容无效' },
+          { status: 400 }
+        );
       }
 
       if (!this.openaiApiKey) {
-        res.status(500).json({ error: '服务器配置错误：API密钥未设置' });
-        return;
+        return NextResponse.json(
+          { error: '服务器配置错误：API密钥未设置' },
+          { status: 500 }
+        );
       }
 
       const messages = [
@@ -36,7 +38,7 @@ export class ChatController {
           role: 'system',
           content: '你是一个专业的AI助手，专门回答关于开发者技能、项目经验、技术问题等。你友好、专业，能够提供有用的建议和解答。请用中文回复。'
         },
-        ...history.slice(-10),
+        ...(history || []).slice(-10),
         { role: 'user', content: message }
       ];
 
@@ -59,29 +61,37 @@ export class ChatController {
         console.error('OpenAI API 错误:', errorData);
 
         if (response.status === 401) {
-          res.status(401).json({ error: 'API密钥验证失败' });
-          return;
+          return NextResponse.json(
+            { error: 'API密钥验证失败' },
+            { status: 401 }
+          );
         }
 
         if (response.status === 429) {
-          res.status(429).json({ error: '请求过于频繁，请稍后再试' });
-          return;
+          return NextResponse.json(
+            { error: '请求过于频繁，请稍后再试' },
+            { status: 429 }
+          );
         }
 
-        res.status(503).json({ error: 'AI服务暂时不可用，请稍后再试' });
-        return;
+        return NextResponse.json(
+          { error: 'AI服务暂时不可用，请稍后再试' },
+          { status: 503 }
+        );
       }
 
       const data = await response.json();
 
       if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-        res.status(500).json({ error: 'AI响应格式错误' });
-        return;
+        return NextResponse.json(
+          { error: 'AI响应格式错误' },
+          { status: 500 }
+        );
       }
 
       const aiResponse = data.choices[0].message.content;
 
-      res.json({
+      return NextResponse.json({
         response: aiResponse,
         usage: data.usage || null
       });
@@ -90,11 +100,16 @@ export class ChatController {
       console.error('聊天API错误:', error);
 
       if (error instanceof SyntaxError) {
-        res.status(400).json({ error: '请求格式无效' });
-        return;
+        return NextResponse.json(
+          { error: '请求格式无效' },
+          { status: 400 }
+        );
       }
 
-      res.status(500).json({ error: '服务器内部错误' });
+      return NextResponse.json(
+        { error: '服务器内部错误' },
+        { status: 500 }
+      );
     }
   }
 }
