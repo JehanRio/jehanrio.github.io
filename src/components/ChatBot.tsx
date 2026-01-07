@@ -47,9 +47,9 @@ export default function ChatBot() {
     setIsLoading(true)
 
     try {
-      // 使用Vercel API的绝对URL
-      const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://your-vercel-app.vercel.app'
-      const response = await fetch(`${API_BASE_URL}/api/chat`, {
+      const API_BASE_URL = window.location.origin
+      console.log('API_BASE_URL:', API_BASE_URL)
+      const response = await fetch(`${API_BASE_URL}/api/chat/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,16 +67,58 @@ export default function ChatBot() {
         throw new Error('网络请求失败')
       }
 
-      const data = await response.json()
-      
+      // 处理流式响应
+      if (!response.body) {
+        throw new Error('没有响应体')
+      }
+
+      // 创建一个新的助手消息
+      const assistantMessageId = (Date.now() + 1).toString()
       const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
+        id: assistantMessageId,
         role: 'assistant',
-        content: data.response,
+        content: '',
         timestamp: new Date()
       }
 
+      // 添加空的助手消息
       setMessages(prev => [...prev, assistantMessage])
+
+      // 创建读取器
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder('utf-8')
+
+      // 处理流式数据
+      let accumulatedContent = ''
+      
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) {
+          break
+        }
+
+        // 解码数据
+        const chunk = decoder.decode(value, { stream: true })
+        accumulatedContent += chunk
+
+        // 更新助手消息内容
+        setMessages(prev => prev.map(msg => 
+          msg.id === assistantMessageId 
+            ? { ...msg, content: accumulatedContent } 
+            : msg
+        ))
+      }
+
+      // 确保最后一次解码
+      const finalChunk = decoder.decode()
+      if (finalChunk) {
+        accumulatedContent += finalChunk
+        setMessages(prev => prev.map(msg => 
+          msg.id === assistantMessageId 
+            ? { ...msg, content: accumulatedContent } 
+            : msg
+        ))
+      }
     } catch (error) {
       console.error('聊天错误:', error)
       const errorMessage: Message = {

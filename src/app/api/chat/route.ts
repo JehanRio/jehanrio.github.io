@@ -13,7 +13,6 @@ interface ChatRequest {
 export async function POST(request: NextRequest) {
   try {
     const { message, history }: ChatRequest = await request.json()
-
     if (!message || typeof message !== 'string') {
       return NextResponse.json(
         { error: '消息内容无效' },
@@ -29,8 +28,8 @@ export async function POST(request: NextRequest) {
     }
 
     // 检查环境变量
-    const openaiApiKey = process.env.OPENAI_API_KEY
-    if (!openaiApiKey) {
+    const deepseekApiKey = process.env.DEEPSEEK_API_KEY
+    if (!deepseekApiKey) {
       return NextResponse.json(
         { error: '服务器配置错误：API密钥未设置' },
         { 
@@ -57,27 +56,26 @@ export async function POST(request: NextRequest) {
       }
     ]
 
-    // 调用 OpenAI API
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    // 调用 DeepSeek API 流式输出
+    const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openaiApiKey}`,
+        'Authorization': `Bearer ${deepseekApiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages,
+        model: 'deepseek-chat',
+        messages: messages,
         max_tokens: 1000,
         temperature: 0.7,
         top_p: 1,
-        frequency_penalty: 0,
-        presence_penalty: 0,
+        stream: true,
       }),
     })
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => null)
-      console.error('OpenAI API 错误:', errorData)
+      console.error('DeepSeek API 错误:', errorData)
       
       if (response.status === 401) {
         return NextResponse.json(
@@ -120,11 +118,10 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const data = await response.json()
-    
-    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+    // 确保响应是可读取的流
+    if (!response.body) {
       return NextResponse.json(
-        { error: 'AI响应格式错误' },
+        { error: '服务器响应格式错误' },
         {
           status: 500,
           headers: {
@@ -136,15 +133,85 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const aiResponse = data.choices[0].message.content
+    // 创建读取器
+    const reader = response.body.getReader()
+    const decoder = new TextDecoder('utf-8')
 
-    return NextResponse.json(
-      {
-        response: aiResponse,
-        usage: data.usage || null
-      },
+    // 创建流式响应
+    return new Response(
+      new ReadableStream({
+        async start(controller) {
+          try {
+            let buffer = ''
+            
+            while (true) {
+              const { done, value } = await reader.read()
+              if (done) {
+                break
+              }
+
+              // 解码新数据并添加到缓冲区
+              buffer += decoder.decode(value, { stream: true })
+              
+              // 处理缓冲区中的所有完整事件
+              let boundary = buffer.indexOf('\n\n')
+              while (boundary !== -1) {
+                const chunk = buffer.substring(0, boundary)
+                buffer = buffer.substring(boundary + 2)
+                
+                // 跳过空行
+                if (chunk.trim() === '') {
+                  continue
+                }
+
+                // 处理每个事件块
+                if (chunk.startsWith('data: ')) {
+                  const dataChunk = chunk.substring(6)
+                  
+                  // 检查是否为结束信号
+                  if (dataChunk === '[DONE]') {
+                    break
+                  }
+
+                  try {
+                    // 解析JSON数据
+                    const parsed = JSON.parse(dataChunk)
+                    
+                    // 提取内容
+                    if (parsed.choices && parsed.choices[0] && parsed.choices[0].delta) {
+                      const content = parsed.choices[0].delta.content || ''
+                      
+                      // 发送内容块
+                      if (content) {
+                        controller.enqueue(new TextEncoder().encode(content))
+                      }
+                    }
+                  } catch (e) {
+                    console.error('JSON解析错误:', e)
+                  }
+                }
+
+                // 寻找下一个事件边界
+                boundary = buffer.indexOf('\n\n')
+              }
+            }
+          } catch (error) {
+            console.error('流式响应处理错误:', error)
+            controller.error(error)
+          } finally {
+            controller.close()
+            reader.releaseLock()
+          }
+        },
+
+        cancel() {
+          reader.releaseLock()
+        }
+      }),
       {
         headers: {
+          'Content-Type': 'text/plain; charset=utf-8',
+          'Transfer-Encoding': 'chunked',
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'POST, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type, Authorization',

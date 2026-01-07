@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 静态导出配置 - 支持 GitHub Pages 部署
-  output: 'export',
+  // 移除静态导出配置以支持API路由
   trailingSlash: true,
   basePath: '',
   assetPrefix: '',
